@@ -1,3 +1,6 @@
+/**
+ * This is the centralized class to provide DB connection throughout the application
+ */
 package org.bharath.utils;
 
 import org.bharath.Main;
@@ -27,6 +30,10 @@ public class DBConnection {
         }
     }
 
+    /**
+     * This method is used to get the connection for the DB
+     * @return
+     */
     public static Connection getConnection(){
         if(dbConnection == null){
             dbConnection = new DBConnection();
@@ -34,6 +41,10 @@ public class DBConnection {
         return connection_;
     }
 
+    /**
+     * This method closes the connection before the garbage collection happens
+     * @throws Throwable
+     */
     @Override
     protected void finalize() throws Throwable {
         connection_.close();

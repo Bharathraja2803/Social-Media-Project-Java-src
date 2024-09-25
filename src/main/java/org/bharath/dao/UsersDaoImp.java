@@ -20,7 +20,7 @@ public class UsersDaoImp{
     }
 
     /**
-     * 
+     * This method returns the instance of the UserDeo class
      * @param connection
      * @return
      */
@@ -34,7 +34,10 @@ public class UsersDaoImp{
     }
 
 
-
+    /**
+     * This method fetches all the users data for this application
+     * @return
+     */
     public List<Users> listAllUsers() {
         List<Users> allUsersData = new ArrayList<>();
 
@@ -68,6 +71,11 @@ public class UsersDaoImp{
         return allUsersData;
     }
 
+
+    /**
+     * This method fetches all the users data having the user role
+     * @return
+     */
     public List<Users> listAllUserRoleAccounts(){
         List<Users> allUserRoleAccounts = new ArrayList<>();
 
@@ -100,6 +108,10 @@ public class UsersDaoImp{
         }
     }
 
+    /**
+     * This method fetches all the users data having the user role
+     * @return
+     */
     public List<Users> listAllTheAdminAccounts(){
         List<Users> allUserRoleAccounts = new ArrayList<>();
 
@@ -132,6 +144,13 @@ public class UsersDaoImp{
         }
     }
 
+    /**
+     * This method reset the password of the user
+     * @param userId
+     * @param targetUser
+     * @param password
+     * @return
+     */
     public boolean resetPassword(int userId, int targetUser, String password) {
         if(userId != targetUser){
             boolean isValidAdminUser = isAdminCheck(userId);
@@ -153,6 +172,12 @@ public class UsersDaoImp{
         }
     }
 
+    /**
+     * This method removes the user and related information from the db
+     * @param userId
+     * @param targetUser
+     * @return
+     */
     public boolean removeUser(int userId, int targetUser) {
 
         boolean isTheUserAdmin = isAdminCheck(userId);
@@ -186,6 +211,11 @@ public class UsersDaoImp{
         }
     }
 
+    /**
+     * This method is used to check whether the user is admin user
+     * @param userId
+     * @return
+     */
     public boolean isAdminCheck(int userId){
         boolean isAValidUserId = isUserIdExits(userId);
         if(!isAValidUserId){
@@ -205,6 +235,11 @@ public class UsersDaoImp{
 
     }
 
+    /**
+     * This method check the user has user role
+     * @param userId
+     * @return
+     */
     public boolean isUserRoleCheck(int userId){
         boolean isAValidUserId = isUserIdExits(userId);
         if(!isAValidUserId){
@@ -224,6 +259,14 @@ public class UsersDaoImp{
 
     }
 
+    /**
+     * This method adds new user to the database
+     * @param userName
+     * @param password
+     * @param birthDate
+     * @param emailId
+     * @return
+     */
     public int addNewUser(String userName, String password, LocalDate birthDate, String emailId) {
         try {
             PreparedStatement addingUserStatement = connection_.prepareStatement("INSERT INTO users(\n" +
@@ -248,6 +291,13 @@ public class UsersDaoImp{
         }
     }
 
+    /**
+     * This method is used to update the role of the user
+     * @param userId
+     * @param targetUserId
+     * @param value
+     * @return
+     */
     public boolean updateTheRoleOfTheUser(int userId, int targetUserId, String value) {
 
         boolean isTheUserAdmin = isAdminCheck(userId);
@@ -302,6 +352,11 @@ public class UsersDaoImp{
         }
     }
 
+    /**
+     * This method is used to retrieve the user data from DB by user id
+     * @param userId
+     * @return
+     */
     public Users getUser(int userId) {
         Users users = null;
         try {
@@ -331,6 +386,13 @@ public class UsersDaoImp{
         return users;
     }
 
+    /**
+     * This method is used to block and unblock the user
+     * @param userId
+     * @param targetUser
+     * @param value
+     * @return
+     */
     public boolean blockAndUnblock(int userId, int targetUser, char value){
         boolean isTheUserAdmin = isAdminCheck(userId);
         if(!isTheUserAdmin){
@@ -391,6 +453,11 @@ public class UsersDaoImp{
         }
     }
 
+    /**
+     * This method is used to check whether the user account is blocked
+     * @param userId
+     * @return
+     */
     public boolean isUserAccountBlocked(int userId){
         boolean isValidUserId = isUserIdExits(userId);
 
@@ -411,6 +478,11 @@ public class UsersDaoImp{
 
     }
 
+    /**
+     * This method is used to check whether the userid is present in the database
+     * @param userId
+     * @return
+     */
     public boolean isUserIdExits(int userId) {
         try {
             PreparedStatement selectUserIdByFilteringUserId = connection_.prepareStatement("select user_id from users where user_id = ?");
@@ -423,6 +495,11 @@ public class UsersDaoImp{
         }
     }
 
+    /**
+     * This method is used to check if the email is already exists
+     * @param emailId
+     * @return
+     */
     public boolean isEmailAlreadyExits(String emailId){
         try {
             PreparedStatement checkIsEmailPresentStatement = connection_.prepareStatement("select user_id from users where email_id = ?");
@@ -435,6 +512,11 @@ public class UsersDaoImp{
         }
     }
 
+    /**
+     * This method is used to get the user id by email_id
+     * @param emailId
+     * @return
+     */
     public int getUserIdByEmailId(String emailId){
         try{
             PreparedStatement selectStatementToFetchIdByEmailId = connection_.prepareStatement("select user_id from users where email_id = ?");

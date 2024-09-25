@@ -1,3 +1,6 @@
+/**
+ * This is a view for post page to print the menu
+ */
 package org.bharath.view;
 
 public class PostView {

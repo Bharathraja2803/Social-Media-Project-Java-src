@@ -1,3 +1,6 @@
+/**
+ * This is the custom implementation of moving forward and backward in the list iterator
+ */
 package org.bharath.utils;
 
 import org.bharath.Main;
@@ -14,6 +17,10 @@ public class MyIterator<T> {
         this.listIterator = listIterator;
     }
 
+    /**
+     * This method checks the previous action and move the pointer to next value
+     * @return
+     */
     public T next() {
         nextWasCalled = true;
         if (previousWasCalled) {
@@ -23,6 +30,10 @@ public class MyIterator<T> {
         return listIterator.next ();
     }
 
+    /**
+     * This method checks the previous action and move the pointer to the previous value
+     * @return
+     */
     public T previous() {
         if (nextWasCalled) {
             listIterator.previous();
@@ -32,6 +43,10 @@ public class MyIterator<T> {
         return listIterator.previous();
     }
 
+    /**
+     * This method checks the previous action and move the pointer to the correct position and remove the record
+     * @return
+     */
     public boolean remove(){
         try{
             if(previousWasCalled){

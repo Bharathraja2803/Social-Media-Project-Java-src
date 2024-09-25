@@ -3967,3 +3967,8 @@ Sep 25, 2024 9:38:24 AM org.bharath.controller.UsersController performMainMenu
 INFO: Thanks for using the application
 Sep 25, 2024 9:38:27 AM org.bharath.controller.UsersController welcomeMessage
 INFO: Thank you for using this application
+Sep 25, 2024 10:29:13 AM org.bharath.controller.UsersController isAuthenticationInValid
+WARNING: User id incorrect
+userid: 2
+Sep 25, 2024 10:29:18 AM org.bharath.controller.UsersController welcomeMessage
+INFO: Thank you for using this application

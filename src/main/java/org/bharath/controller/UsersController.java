@@ -30,15 +30,14 @@ public class UsersController {
     private static final FollowerDao FOLLOWER_DAO = FollowerDao.getInstance(CONNECTION);
 
 
-    /*
-                "\t1. Login\n" +
-                "\t2. Sign up\n" +
-                "\t3. Forget Password\n" +
-                "\t0. Quit the application\n");
-             */
+
 
     /**
      * This method takes care of Welcome page and user choice and perform navigation accordingly
+     *                  "\t1. Login\n" +
+     *                 "\t2. Sign up\n" +
+     *                 "\t3. Forget Password\n" +
+     *                 "\t0. Quit the application\n
      */
     public void welcomeMessage(){
         welcomeMessageLoop :
@@ -130,7 +129,7 @@ public class UsersController {
 
     }
 
-    //Signup page user input
+
 
     /**
      * This method takes the user input for registering the user account
@@ -184,7 +183,7 @@ public class UsersController {
         return true;
     }
 
-    //Login page user input
+
 
     /**
      * This method takes the login credentials from the user, validate it and returns true if the credential is valid and false if the credential is not valid
@@ -234,14 +233,12 @@ public class UsersController {
         return false;
     }
 
-    /*This method takes care of navigation part of below menu
-                "\t1. Posts page\n" +
-                "\t2. People page\n" +
-                "\t0. Logout");
-    }
-     */
+
     /**
      * This method takes the user input and perform navigation part the different modules
+     *                  "\t1. Posts page\n" +
+     *                 "\t2. People page\n" +
+     *                 "\t0. Logout"
      */
     private void performMainMenu() {
         mainPageLoop:
@@ -271,15 +268,14 @@ public class UsersController {
             }
         }
     }
-/*
-                "\t1. Posts Page\n" +
-                "\t2. People Page\n" +
-                "\t3. Account Action Page\n" +
-                "\t0. Logout");
- */
+
 
     /**
      * This method performs the action entered by the admin user
+     *                  "\t1. Posts Page\n" +
+     *                 "\t2. People Page\n" +
+     *                 "\t3. Account Action Page\n" +
+     *                 "\t0. Logout"
      */
     private void performMainMenuIfAdmin() {
         mainPageLoop:
@@ -315,18 +311,17 @@ public class UsersController {
         }
     }
 
-    /*
-                "\t1. Make the user as admin\n" +
-                "\t2. Make the admin as user\n" +
-                "\t3. Remove user account\n" +
-                "\t4. Block user account\n" +
-                "\t5. Unblock user account\n" +
-                "\t6. Change password for user account\n" +
-                "\t0. Back to previous page"
-    */
+
 
     /**
      * This method performs account related actions entered by the admin user
+     *                 "\t1. Make the user as admin\n" +
+     *                 "\t2. Make the admin as user\n" +
+     *                 "\t3. Remove user account\n" +
+     *                 "\t4. Block user account\n" +
+     *                 "\t5. Unblock user account\n" +
+     *                 "\t6. Change password for user account\n" +
+     *                 "\t0. Back to previous page"
      */
     private void performActionOnUserAccounts(){
         mainAccountActionPageLoop:

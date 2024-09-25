@@ -1,3 +1,6 @@
+/**
+ * This is the bean class for users table
+ */
 package org.bharath.model;
 
 

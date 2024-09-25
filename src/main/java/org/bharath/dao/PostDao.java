@@ -19,6 +19,12 @@ public class PostDao {
         connection_ = connection;
     }
 
+    /**
+     * This method is used to insert the post into the database
+     * @param postContent
+     * @param userId
+     * @return
+     */
     public boolean createPost(String postContent, int userId){
         try {
             PreparedStatement createNewPostStatement = connection_.prepareStatement("INSERT INTO post (post_id, user_id, posted_date, posted_time, post_content) VALUES (nextval('post_id_sequence'), ?, CURRENT_DATE, CURRENT_TIME, ?)");
@@ -33,6 +39,11 @@ public class PostDao {
         }
     }
 
+    /**
+     * This method is used to delete the post from the database
+     * @param postId
+     * @return
+     */
     public boolean removePost(int postId){
         boolean isPostExits = isPostExists(postId);
 
@@ -53,6 +64,11 @@ public class PostDao {
 
     }
 
+    /**
+     * This method is used to check whether the post exists in the database
+     * @param postId
+     * @return
+     */
     public boolean isPostExists(int postId){
         try {
             PreparedStatement selectQueryToCheckPostExits = connection_.prepareStatement("select post_id from post where post_id = ?");
@@ -65,6 +81,11 @@ public class PostDao {
         }
     }
 
+    /**
+     * This method is used to get the instance of the PostDeo class
+     * @param connection
+     * @return
+     */
     public static PostDao getInstance(Connection connection){
         if(postDao_ == null){
             postDao_ = new PostDao(connection);
@@ -72,6 +93,11 @@ public class PostDao {
         return postDao_;
     }
 
+    /**
+     * This method is used to get all the post by the specific user
+     * @param userId
+     * @return
+     */
     public List<Post> getAllMyPost(int userId){
         List<Post> myAllPosts = new ArrayList<>();
         try {

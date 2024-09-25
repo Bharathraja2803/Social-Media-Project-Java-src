@@ -35,15 +35,14 @@ public class PostController {
         PostController.users_ = users;
     }
 
-    /*Below are the action that this method will take care on the post
-                "\t1. Create Post\n" +
-                "\t2. View all My Post one by one\n" +
-                "\t3. View all Friends Post one by one\n" +
-                "\t0. Back to previous page
-     */
+
 
     /**
      * This method performs the action related to post by the normal user
+     *                 "\t1. Create Post\n" +
+     *                 "\t2. View all My Post one by one\n" +
+     *                 "\t3. View all Friends Post one by one\n" +
+     *                 "\t0. Back to previous page
      */
     public void chooseOptionsMainPostPage(){
 
@@ -133,15 +132,14 @@ public class PostController {
         }
     }
 
-    /*
-                 "\t1. Create Post\n" +
-                "\t2. View all My Post one by one\n" +
-                "\t3. View all others Post one by one\n" +
-                "\t0. Back to previous page"
-     */
+
 
     /**
      * This method performs the action related to post by the admin user
+     *                  "\t1. Create Post\n" +
+     *                 "\t2. View all My Post one by one\n" +
+     *                 "\t3. View all others Post one by one\n" +
+     *                 "\t0. Back to previous page"
      */
     public void chooseOptionsMainPostPageIfAdmin(){
 
@@ -232,19 +230,17 @@ public class PostController {
         }
     }
 
-    /*
-                "\t1. Like the post\n" +
-                "\t2. Comment the post\n" +
-                "\t3. View Likes for the post\n" +
-                "\t4. View Comments for the post\n" +
-                "\t5. Delete this post\n" +
-                "\t6. Next Post\n" +
-                "\t7. Previous Post\n" +
-                "\t0. Back to previous menu");
- */
 
     /**
      * This method performs iteration action and like comment action on the post
+     *                 "\t1. Like the post\n" +
+     *                 "\t2. Comment the post\n" +
+     *                 "\t3. View Likes for the post\n" +
+     *                 "\t4. View Comments for the post\n" +
+     *                 "\t5. Delete this post\n" +
+     *                 "\t6. Next Post\n" +
+     *                 "\t7. Previous Post\n" +
+     *                 "\t0. Back to previous menu");
      * @param currentPost -> current post in iterator
      * @param myPostIterator -> iterator for iterating
      * @param isMySelf -> checks true if the post belongs to me

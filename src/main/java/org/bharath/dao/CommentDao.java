@@ -18,6 +18,11 @@ public class CommentDao {
         connection_ = connection;
     }
 
+    /**
+     * This method is used to delete all the comments for the specific post
+     * @param postId
+     * @return
+     */
     public boolean deleteAllCommentsForThePost(int postId){
 
         List<Comment> commentList = getAllCommentsForThePost(postId);
@@ -40,6 +45,11 @@ public class CommentDao {
 
     }
 
+    /**
+     * This method is used to delete all comments for the specific user
+     * @param userId
+     * @return
+     */
     public boolean deleteAllCommentsForTheUser(int userId){
         UsersDaoImp usersDaoImp = UsersDaoImp.getInstance(connection_);
         if(!usersDaoImp.isUserIdExits(userId)){
@@ -58,6 +68,13 @@ public class CommentDao {
         }
     }
 
+    /**
+     * This method is used to insert record to the DB
+     * @param userId
+     * @param postId
+     * @param commentText
+     * @return
+     */
     public boolean commentThePost(int userId, int postId, String commentText){
         try {
             PreparedStatement insertQueryForCommentingThePost = connection_.prepareStatement("INSERT INTO comment (comment_id, comment_date, comment_time, comment_user_id, post_id, comment_text) VALUES (nextval('comment_id_sequence'), CURRENT_DATE, CURRENT_TIME, ?, ?, ?)");
@@ -73,6 +90,11 @@ public class CommentDao {
         }
     }
 
+    /**
+     * This method is used to get all the comments for the specific post
+     * @param postId
+     * @return
+     */
     public List<Comment> getAllCommentsForThePost(int postId){
         List<Comment> commentList = new ArrayList<>();
         try {
@@ -106,6 +128,11 @@ public class CommentDao {
         }
     }
 
+    /**
+     * Thie method returns the instance of the CommentDeo class
+     * @param connection
+     * @return
+     */
     public static CommentDao getInstance(Connection connection){
         if(commentDao_ == null){
             commentDao_ = new CommentDao(connection);

@@ -18,6 +18,12 @@ public class LikeDao {
         connection_ = connection;
     }
 
+    /**
+     * This method is used to insert the like record into the database
+     * @param userId
+     * @param postId
+     * @return
+     */
     public boolean likeThePost(int userId, int postId){
         Like like = getLike(userId, postId);
         if(like != null){
@@ -39,6 +45,11 @@ public class LikeDao {
 
     }
 
+    /**
+     * This method is used to fetch all the likes for the post specified
+     * @param postId
+     * @return
+     */
     public List<Like> getAllLikesForThePost(int postId){
         List<Like> likeList = new ArrayList<>();
         try {
@@ -70,6 +81,11 @@ public class LikeDao {
         }
     }
 
+    /**
+     * This method is used to delete the like record from the database
+     * @param likeId
+     * @return
+     */
     public boolean removeLike(int likeId){
         try {
             PreparedStatement removeLikeQuery = connection_.prepareStatement("delete from likes where like_id = ?");
@@ -84,6 +100,11 @@ public class LikeDao {
 
     }
 
+    /**
+     * This method is used to remove all the like record for the specific user
+     * @param userId
+     * @return
+     */
     public boolean removeAllLikesByUserId(int userId){
         UsersDaoImp usersDaoImp = UsersDaoImp.getInstance(connection_);
         boolean isValidUser = usersDaoImp.isUserIdExits(userId);
@@ -105,6 +126,12 @@ public class LikeDao {
         }
 
     }
+
+    /**
+     * This method is used to remove all the like record for the specific post
+     * @param postId
+     * @return
+     */
     public boolean removeAllLikeForSpecificPost(int postId){
         List<Like> likeList = getAllLikesForThePost(postId);
 
@@ -126,6 +153,12 @@ public class LikeDao {
 
     }
 
+    /**
+     * This method is used to get the like object by userId and postId
+     * @param userId
+     * @param postId
+     * @return
+     */
     public Like getLike(int userId, int postId){
         try {
             PreparedStatement selectQueryForLikeId = connection_.prepareStatement("select * from likes where user_id = ? and post_id = ?");
@@ -148,6 +181,11 @@ public class LikeDao {
         }
     }
 
+    /**
+     * This method is used to get the instance of LikeDao
+     * @param connection
+     * @return
+     */
     public static LikeDao getInstance(Connection connection){
         if(likeDao_ == null){
             likeDao_ = new LikeDao(connection);

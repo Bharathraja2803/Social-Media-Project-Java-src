@@ -26,17 +26,16 @@ public class FollowerController {
     public FollowerController(Users users){
         FollowerController.users_ = users;
     }
-/*
-                "\t1. View List of all users you are following\n" +
-                "\t2. View List of all users you are not following\n" +
-                "\t3. View List of all users who are following you\n" +
-                "\t4. Follow user\n" +
-                "\t5. Unfollow user\n" +
-                "\t0. Back to previous page");
- */
+
 
     /**
      * This method performs the action related to post by the normal user
+     *                 "\t1. View List of all users you are following\n" +
+     *                 "\t2. View List of all users you are not following\n" +
+     *                 "\t3. View List of all users who are following you\n" +
+     *                 "\t4. Follow user\n" +
+     *                 "\t5. Unfollow user\n" +
+     *                 "\t0. Back to previous page"
      */
     public void chooseOptionMainFollowPage(){
         followerMainMethodLoop:
@@ -190,14 +189,13 @@ public class FollowerController {
         }
     }
 
-    /*
-                "\t1. View all the followers of a particular user\n" +
-                "\t2. View all the following of a particular user\n" +
-                "\t0. Back to previous page");
-     */
+
 
     /**
      * This method performs the action related to post by the admin user
+     *                 "\t1. View all the followers of a particular user\n" +
+     *                 "\t2. View all the following of a particular user\n" +
+     *                 "\t0. Back to previous page"
      */
     public void chooseOptionMainFollowPageIfAdmin(){
         followerMainMethodLoop:

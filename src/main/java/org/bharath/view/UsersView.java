@@ -1,3 +1,6 @@
+/**
+ * This is a view for user page to print the menu
+ */
 package org.bharath.view;
 
 public class UsersView {

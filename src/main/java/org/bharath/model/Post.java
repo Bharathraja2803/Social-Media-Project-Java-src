@@ -1,3 +1,6 @@
+/**
+ * This is the bean class for post table
+ */
 package org.bharath.model;
 
 import java.time.LocalDate;

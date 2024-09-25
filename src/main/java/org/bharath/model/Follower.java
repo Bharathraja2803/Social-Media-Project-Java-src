@@ -1,3 +1,6 @@
+/**
+ * This is the bean class for Follower table
+ */
 package org.bharath.model;
 
 public class Follower {

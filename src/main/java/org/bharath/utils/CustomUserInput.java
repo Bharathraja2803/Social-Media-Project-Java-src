@@ -1,3 +1,6 @@
+/**
+ * This is the centralized class for getting the user inputs
+ */
 package org.bharath.utils;
 
 import java.util.Scanner;
@@ -8,6 +11,10 @@ public class CustomUserInput {
     private static boolean isObjectCreated_ = false;
     private static CustomUserInput customUserInput8_ = null;
 
+    /**
+     * This method returns the instance of the CustomUserInput class
+     * @return
+     */
     public static CustomUserInput getInstance(){
         if(isObjectCreated_){
             return customUserInput8_;
@@ -17,6 +24,12 @@ public class CustomUserInput {
         return customUserInput8_;
     }
 
+    /**
+     * This method validate the integer input entered by the user
+     * @param startRange
+     * @param endRange
+     * @return
+     */
     public int validateAndGetIntegerInput(int startRange, int endRange){
         int userChoice;
         boolean isFirstAttempt = true;
@@ -38,6 +51,12 @@ public class CustomUserInput {
         return userChoice;
     }
 
+    /**
+     * This method validate the long input entered by the user
+     * @param startRange
+     * @param endRange
+     * @return
+     */
     public long validateAndGetLongInput(long startRange, long endRange){
         long userChoice;
         boolean isFirstAttempt = true;
@@ -59,6 +78,12 @@ public class CustomUserInput {
         return userChoice;
     }
 
+    /**
+     * This method validate the double input entered by the user
+     * @param startRange
+     * @param endRange
+     * @return
+     */
     public double validateAndGetDoubleInput(double startRange, double endRange){
         double userChoice;
         boolean isFirstAttempt = true;
@@ -80,10 +105,17 @@ public class CustomUserInput {
         return userChoice;
     }
 
+    /**
+     * This method prints the menu passed as the parameter
+     * @param options
+     */
     public void printOptionsMenu(String options){
         System.out.println(options);
     }
 
+    /**
+     * This method prints the line separator
+     */
     public void printSeparatorLine() {
         for(int i = 0; i < 30; i++ )
             System.out.print("-");

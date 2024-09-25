@@ -1,3 +1,6 @@
+/**
+ * This is a view for follower page to print the menu
+ */
 package org.bharath.view;
 
 public class FollowerView {

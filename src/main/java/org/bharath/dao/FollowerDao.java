@@ -18,6 +18,12 @@ public class FollowerDao {
         connection_ = connection;
     }
 
+    /**
+     * This method is used to insert the record in the DB
+     * @param userId
+     * @param followerId
+     * @return
+     */
     public boolean followUser(int userId, int followerId){
         boolean isFollowing = isFollowing(userId, followerId);
         if(isFollowing){
@@ -51,6 +57,11 @@ public class FollowerDao {
         }
     }
 
+    /**
+     * This method is used to list all the followed users by the userId
+     * @param userId
+     * @return
+     */
     public List<Users> listAllFollowedUsers(int userId){
         List<Users> usersList = new ArrayList<>();
         boolean isUserIdExits = isUserIdExits(userId);
@@ -91,6 +102,11 @@ public class FollowerDao {
         return usersList;
     }
 
+    /**
+     * This method is used to check id the user id is a valid user in DB
+     * @param userId
+     * @return
+     */
     public boolean isUserIdExits(int userId){
         UsersDaoImp usersDaoImp = UsersDaoImp.getInstance(connection_);
         List<Users> allUsersInSocialMedia = usersDaoImp.listAllUsers();
@@ -98,6 +114,11 @@ public class FollowerDao {
 
     }
 
+    /**
+     * This method is used to list all the users who you are not following
+     * @param userId
+     * @return
+     */
     public List<Users> listAllNotFollowedUsers(int userId){
         boolean isUserIdExits = isUserIdExits(userId);
         if(!isUserIdExits){
@@ -122,6 +143,11 @@ public class FollowerDao {
         return allUsersInSocialMedia;
     }
 
+    /**
+     * This method is used to list all the user following you
+     * @param userId
+     * @return
+     */
     public List<Users> listOfAllUsersFollowingYou(int userId){
         List<Users> usersList = new ArrayList<>();
         boolean isUserIdExits = isUserIdExits(userId);
@@ -162,6 +188,12 @@ public class FollowerDao {
         return usersList;
     }
 
+    /**
+     * This method is used to check the user is following to the target user id
+     * @param userId
+     * @param followerId
+     * @return
+     */
     public boolean isFollowing(int userId, int followerId){
         try {
             PreparedStatement selectQueryForUser = connection_.prepareStatement("select * from follower where user_id = ? and following_user_id = ?");
@@ -175,6 +207,12 @@ public class FollowerDao {
         return false;
     }
 
+    /**
+     * This method is used to delete the record in the follower table
+     * @param userId
+     * @param unFollowId
+     * @return
+     */
     public boolean unFollowUser(int userId, int unFollowId){
         boolean isUserExits = isUserIdExits(userId);
         boolean isFollowerExits = isUserIdExits(unFollowId);
@@ -213,6 +251,11 @@ public class FollowerDao {
 
     }
 
+    /**
+     * This method will return the instance of the FollowerDeo
+     * @param connection
+     * @return
+     */
     public static FollowerDao getInstance(Connection connection){
         if(followerDao_ == null){
             followerDao_ = new FollowerDao(connection);

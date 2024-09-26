@@ -3,6 +3,7 @@ package org.bharath;
 
 import org.bharath.controller.UsersController;
 import org.bharath.utils.CustomUserInput;
+import org.bharath.view.UsersView;
 
 import java.io.*;
 import java.util.logging.FileHandler;
@@ -14,8 +15,8 @@ public class Main {
     public static final Logger LOGGER = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
         initializeConsoleAndFileLogs();
-        UsersController usersController = new UsersController();
-        usersController.welcomeMessage();
+        UsersView usersView = new UsersView();
+        usersView.welcomeMessage();
     }
 
     private static void initializeConsoleAndFileLogs(){

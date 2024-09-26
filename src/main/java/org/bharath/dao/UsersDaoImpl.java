@@ -8,14 +8,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersDaoImp{
+public class UsersDaoImpl implements UsersDao{
 
 
-    private static UsersDaoImp usersDaoImp_ = null;
+    private static UsersDaoImpl usersDaoImp_ = null;
     private static Connection connection_;
 
 
-    private UsersDaoImp(Connection connection){
+    private UsersDaoImpl(Connection connection){
         connection_ = connection;
     }
 
@@ -24,9 +24,9 @@ public class UsersDaoImp{
      * @param connection
      * @return
      */
-    public static UsersDaoImp getInstance(Connection connection){
+    public static UsersDaoImpl getInstance(Connection connection){
         if(usersDaoImp_ == null){
-            usersDaoImp_ = new UsersDaoImp(connection);
+            usersDaoImp_ = new UsersDaoImpl(connection);
             return usersDaoImp_;
         }else{
             return usersDaoImp_;
@@ -34,10 +34,12 @@ public class UsersDaoImp{
     }
 
 
+
     /**
      * This method fetches all the users data for this application
      * @return
      */
+    @Override
     public List<Users> listAllUsers() {
         List<Users> allUsersData = new ArrayList<>();
 
@@ -76,6 +78,7 @@ public class UsersDaoImp{
      * This method fetches all the users data having the user role
      * @return
      */
+    @Override
     public List<Users> listAllUserRoleAccounts(){
         List<Users> allUserRoleAccounts = new ArrayList<>();
 
@@ -112,6 +115,7 @@ public class UsersDaoImp{
      * This method fetches all the users data having the user role
      * @return
      */
+    @Override
     public List<Users> listAllTheAdminAccounts(){
         List<Users> allUserRoleAccounts = new ArrayList<>();
 
@@ -151,6 +155,7 @@ public class UsersDaoImp{
      * @param password
      * @return
      */
+    @Override
     public boolean resetPassword(int userId, int targetUser, String password) {
         if(userId != targetUser){
             boolean isValidAdminUser = isAdminCheck(userId);
@@ -178,6 +183,7 @@ public class UsersDaoImp{
      * @param targetUser
      * @return
      */
+    @Override
     public boolean removeUser(int userId, int targetUser) {
 
         boolean isTheUserAdmin = isAdminCheck(userId);
@@ -216,6 +222,7 @@ public class UsersDaoImp{
      * @param userId
      * @return
      */
+    @Override
     public boolean isAdminCheck(int userId){
         boolean isAValidUserId = isUserIdExits(userId);
         if(!isAValidUserId){
@@ -240,6 +247,7 @@ public class UsersDaoImp{
      * @param userId
      * @return
      */
+    @Override
     public boolean isUserRoleCheck(int userId){
         boolean isAValidUserId = isUserIdExits(userId);
         if(!isAValidUserId){
@@ -267,6 +275,7 @@ public class UsersDaoImp{
      * @param emailId
      * @return
      */
+    @Override
     public int addNewUser(String userName, String password, LocalDate birthDate, String emailId) {
         try {
             PreparedStatement addingUserStatement = connection_.prepareStatement("INSERT INTO users(\n" +
@@ -298,6 +307,7 @@ public class UsersDaoImp{
      * @param value
      * @return
      */
+    @Override
     public boolean updateTheRoleOfTheUser(int userId, int targetUserId, String value) {
 
         boolean isTheUserAdmin = isAdminCheck(userId);
@@ -357,6 +367,7 @@ public class UsersDaoImp{
      * @param userId
      * @return
      */
+    @Override
     public Users getUser(int userId) {
         Users users = null;
         try {
@@ -393,6 +404,7 @@ public class UsersDaoImp{
      * @param value
      * @return
      */
+    @Override
     public boolean blockAndUnblock(int userId, int targetUser, char value){
         boolean isTheUserAdmin = isAdminCheck(userId);
         if(!isTheUserAdmin){
@@ -458,6 +470,7 @@ public class UsersDaoImp{
      * @param userId
      * @return
      */
+    @Override
     public boolean isUserAccountBlocked(int userId){
         boolean isValidUserId = isUserIdExits(userId);
 
@@ -483,6 +496,7 @@ public class UsersDaoImp{
      * @param userId
      * @return
      */
+    @Override
     public boolean isUserIdExits(int userId) {
         try {
             PreparedStatement selectUserIdByFilteringUserId = connection_.prepareStatement("select user_id from users where user_id = ?");
@@ -500,6 +514,7 @@ public class UsersDaoImp{
      * @param emailId
      * @return
      */
+    @Override
     public boolean isEmailAlreadyExits(String emailId){
         try {
             PreparedStatement checkIsEmailPresentStatement = connection_.prepareStatement("select user_id from users where email_id = ?");
@@ -517,6 +532,7 @@ public class UsersDaoImp{
      * @param emailId
      * @return
      */
+    @Override
     public int getUserIdByEmailId(String emailId){
         try{
             PreparedStatement selectStatementToFetchIdByEmailId = connection_.prepareStatement("select user_id from users where email_id = ?");
